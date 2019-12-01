@@ -1,0 +1,22 @@
+language: shell
+matrix:
+  fast_finish: true
+  include:   
+    - name: "Windows WSL1"
+      os: windows
+      language: shell
+      before_install:
+        - curl -L -o ubuntu-1804.zip https://aka.ms/wsl-ubuntu-1804
+        - powershell.exe -NoProfile -Command "Expand-Archive -Path ubuntu-1804.zip -DestinationPath Ubuntu"
+        - Ubuntu/ubuntu1804.exe install --root
+      install:
+        - wsl sudo apt update
+        - wsl sudo DEBIAN_FRONTEND=noninteractive apt dist-upgrade -y
+        - wsl sudo DEBIAN_FRONTEND=noninteractive apt install -y python3-pip cmake
+        - wsl sudo pip3 install --upgrade pip
+      before_script:
+        - wsl python3 -c "import site; print(site.getsitepackages()[0])"
+        - wsl python3 -c "import site; print(site.getsitepackages()[1])"
+        - wsl pip3 --version
+      script:
+        - wsl cd /usr/local/lib/python3.6/site-packages
