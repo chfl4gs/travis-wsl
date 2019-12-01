@@ -16,4 +16,4 @@ matrix:
       before_script:
         - wsl pip3 --version
       script:
-        - wsl `cd \$(python3 -c \"import site; print(site.getsitepackages()[0])\")`
+        - wsl cd `python3 -c "import site; print(site.getsitepackages()[0])"`
