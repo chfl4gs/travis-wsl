@@ -1,10 +1,9 @@
 language: shell
+os: windows
 matrix:
   fast_finish: true
   include:   
     - name: "Windows WSL1"
-      os: windows
-      language: shell
       before_install:
         - curl -L -o ubuntu-1804.zip https://aka.ms/wsl-ubuntu-1804
         - powershell.exe -NoProfile -Command "Expand-Archive -Path ubuntu-1804.zip -DestinationPath Ubuntu"
