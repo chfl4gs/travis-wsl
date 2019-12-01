@@ -14,8 +14,8 @@ matrix:
         - wsl sudo DEBIAN_FRONTEND=noninteractive apt install -y python3-pip cmake
         - wsl sudo pip3 install --upgrade pip
       before_script:
-        - wsl python3 -c "import site; print(site.getsitepackages()[0])"
-        - wsl python3 -c "import site; print(site.getsitepackages()[1])"
+        - wsl $(python3 -c "import site; print(site.getsitepackages()[0])")
+        - wsl $(python3 -c "import site; print(site.getsitepackages()[1])")
         - wsl pip3 --version
       script:
         - wsl cd /usr/local/lib/python3.6/site-packages
