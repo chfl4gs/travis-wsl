@@ -8,8 +8,8 @@ matrix:
         #- curl -L -o ubuntu-1804.zip https://aka.ms/wsl-ubuntu-1804
         #- powershell.exe -NoProfile -Command "Expand-Archive -Path ubuntu-1804.zip -DestinationPath Ubuntu"
         #- Ubuntu/ubuntu1804.exe install --root
-        - choco uninstall -y mingw wsl
-        - choco install wsl-ubuntu-1804 wsl
+        #- choco uninstall -y mingw wsl
+        - choco install wsl-ubuntu-1804
       install:
         - wsl sudo apt update
         - wsl sudo DEBIAN_FRONTEND=noninteractive apt dist-upgrade -y
@@ -19,3 +19,4 @@ matrix:
         - wsl pip3 --version
       script:
         - wsl cd //usr/local/lib/python3.6/dist-packages/
+        - MSYS_NO_PATHCONV=1 wsl cd /usr/local/lib/python3.6/dist-packages/
