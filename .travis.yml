@@ -18,5 +18,7 @@ matrix:
       before_script:
         - wsl pip3 --version
       script:
-        - wsl cd //usr/local/lib/python3.6/dist-packages/
-        - MSYS_NO_PATHCONV=1 wsl cd /usr/local/lib/python3.6/dist-packages/
+        - wsl ls -lah //usr/local/lib/python3.6/dist-packages/
+        - MSYS_NO_PATHCONV=1 wsl ls -lah /usr/local/lib/python3.6/dist-packages/
+        - wsl ls -lah //usr/local/lib/python3.6/dist-packages/usr/lib/python3/
+        - wsl ls -lah //usr/local/lib/python3.6/
