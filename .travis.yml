@@ -18,4 +18,4 @@ matrix:
       before_script:
         - wsl pip3 --version
       script:
-        - wsl cd /usr/local/lib/python3.6/dist-packages/
+        - wsl cd //usr/local/lib/python3.6/dist-packages/
