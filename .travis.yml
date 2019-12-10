@@ -3,20 +3,44 @@ os: windows
 matrix:
   fast_finish: true
   include:   
-    - name: "Windows WSL1"
-      before_install:
+#    - name: "Windows WSL1"
+#      before_install:
         #- curl -L -o ubuntu-1804.zip https://aka.ms/wsl-ubuntu-1804
         #- powershell.exe -NoProfile -Command "Expand-Archive -Path ubuntu-1804.zip -DestinationPath Ubuntu"
         #- Ubuntu/ubuntu1804.exe install --root
         #- choco uninstall -y mingw wsl
-        - choco install wsl-ubuntu-1804
-      install:
-        - wsl sudo apt update
-        - wsl sudo DEBIAN_FRONTEND=noninteractive apt dist-upgrade -y
-        - wsl sudo DEBIAN_FRONTEND=noninteractive apt install -y python3-pip
-        - wsl sudo pip3 install --upgrade pip
-      before_script:
-        - wsl pip3 --version
+#        - choco install wsl-ubuntu-1804
+#      install:
+#        - wsl sudo apt update
+#        - wsl sudo DEBIAN_FRONTEND=noninteractive apt dist-upgrade -y
+#        - wsl sudo DEBIAN_FRONTEND=noninteractive apt install -y python3-pip
+#        - wsl sudo pip3 install --upgrade pip
+#      before_script:
+#        - wsl pip3 --version
+#      script:
+#        - wsl ls -lah //usr/local/lib/python3.6/dist-packages/
+#        - MSYS_NO_PATHCONV=1 wsl ls -lah /usr/local/lib/python3.6/dist-packages/
+    - name: "Python 3.6 on Windows"
+      os: windows
+      language: shell
+      env:
+#        - PATH="/c/Python36:/c/Python36/Scripts:/c/Program Files (x86)/keystone/bin/:$PATH"
+#      before_install:
+#        - choco install python --version=3.6.8
+#        - python -m pip install --upgrade pip
+#      install:
+#        - pip install 'capstone>=4.0.1' 'pefile>=2019.4.18' 'python-registry>=1.3.1' 'unicorn>=1.0.2rc1'
+#        - git clone https://github.com/keystone-engine/keystone
+#        - cd keystone
+#        - mkdir build
+#        - cd build
+#        - cmd.exe /C '"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" amd64 & ..\nmake-dll.bat'
+#        - cmd.exe /C '"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" amd64 & ..\nmake-lib.bat && nmake install'
+#        - cd ../bindings/python
+#        - python setup.py install
+#        - cd $TRAVIS_HOME/build/chfl4gs/qiling
+#        - python setup.py install
+#      before_script:
+#        - cd tests
       script:
-        - wsl ls -lah //usr/local/lib/python3.6/dist-packages/
-        - MSYS_NO_PATHCONV=1 wsl ls -lah /usr/local/lib/python3.6/dist-packages/
+        - ls -laR /c/Windows/
