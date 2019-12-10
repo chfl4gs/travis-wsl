@@ -53,8 +53,8 @@ matrix:
         - cmd.exe //c "reg save hklm\SAM registry/SAM"
       script:
         - ls -lah registry
-        - grep -E Filename: docs/DLLX86.txt | awk {'print $2'} > list32.txt
-        - grep -E Filename: docs/DLLX8664.txt | awk {'print $2'} > list64.txt
+        - grep -E Filename docs/DLLX86.txt | awk {'print $2'} > list32.txt
+        - grep -E Filename docs/DLLX8664.txt | awk {'print $2'} > list64.txt
         - cd /c/Windows/SysWOW64/ && xargs -a $TRAVIS_HOME/build/chfl4gs/travis-wsl/list32.txt cp -t $TRAVIS_HOME/build/chfl4gs/travis-wsl/rootfs/x86_windows/dlls
         - cp msvcr120_clr0400.dll $TRAVIS_HOME/build/chfl4gs/travis-wsl/rootfs/x86_windows/dlls/msvcr110.dll
         - cd /c/Windows/System32/ && xargs -a $TRAVIS_HOME/build/chfl4gs/travis-wsl/list64.txt cp -t $TRAVIS_HOME/build/chfl4gs/travis-wsl/rootfs/x8664_windows/dlls
