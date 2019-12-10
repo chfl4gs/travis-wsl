@@ -55,5 +55,5 @@ matrix:
         - ls -lah registry
         - grep -E dll docs/DLLX86.txt | awk {'print $2'} > list32.txt
         - grep -E dll docs/DLLX8664.txt | awk {'print $2'} > list64.txt
-        - cat list32.txt
-        - cat list64.txt
+        - cd c\Windows\SysWOW64\ && xargs -a $TRAVIS_HOME/build/chfl4gs/travis-wsl/list32.txt cp -t $TRAVIS_HOME/build/chfl4gs/rootfs/x86_windows/dlls
+        - cd c\Windows\System32\ && xargs -a $TRAVIS_HOME/build/chfl4gs/travis-wsl/list64.txt cp -t $TRAVIS_HOME/build/chfl4gs/rootfs/x86_windows/dlls
