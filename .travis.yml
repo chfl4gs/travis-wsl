@@ -50,6 +50,7 @@ matrix:
         - cmd.exe //c "reg save hklm\security registry/SECURITY"
         - cmd.exe //c "reg save hklm\software registry/SOFTWARE"
         - cmd.exe //c "reg save hklm\SAM registry/SAM"
+        - ntuser
       script:
         - ls -lah registry
         - grep -E dll docs/DLLX86.txt | awk {'print $2'} > list32.txt
