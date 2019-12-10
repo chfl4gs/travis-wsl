@@ -45,11 +45,11 @@ matrix:
         - mkdir -p rootfs/x8664_windows/registry
         - mkdir -p rootfs/x86_windows/dlls
         - mkdir -p rootfs/x86_windows/registry
-        - ntuser hive : C:\Users\Default\NTUSER.DAT 
-        - reg save hklm\system SYSTEM
-        - reg save hklm\security SECURITY
-        - reg save hklm\software SOFTWARE
-        - reg save hklm\SAM SAM
+        - cmd.exe //c 'ntuser hive : C:\Users\Default\NTUSER.DAT'
+        - cmd.exe //c 'reg save hklm\system SYSTEM'
+        - cmd.exe //c 'reg save hklm\security SECURITY'
+        - cmd.exe //c 'reg save hklm\software SOFTWARE'
+        - cmd.exe //c 'reg save hklm\SAM SAM'
       script:
         - grep -E dll docs/DLLX86.txt | awk {'print $2'} > list32.txt
         - grep -E dll docs/DLLX8664.txt | awk {'print $2'} > list64.txt
