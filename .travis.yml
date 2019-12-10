@@ -40,9 +40,18 @@ matrix:
 #        - python setup.py install
 #        - cd $TRAVIS_HOME/build/chfl4gs/qiling
 #        - python setup.py install
-#      before_script:
-#        - cd tests
+      before_script:
+        - mkdir -p rootfs/x8664_windows/dlls
+        - mkdir -p rootfs/x8664_windows/registry
+        - mkdir -p rootfs/x86_windows/dlls
+        - mkdir -p rootfs/x86_windows/registry
+        - ntuser hive : C:\Users\Default\NTUSER.DAT 
+        - reg save hklm\system SYSTEM
+        - reg save hklm\security SECURITY
+        - reg save hklm\software SOFTWARE
+        - reg save hklm\SAM SAM
       script:
-        - grep -E dll docs/DLLX86.txt | awk {'print $2'} > list.txt
-        - cat list.txt
-        - ls -laR /c/Windows/SysWOW64/
+        - grep -E dll docs/DLLX86.txt | awk {'print $2'} > list32.txt
+        - grep -E dll docs/DLLX8664.txt | awk {'print $2'} > list64.txt
+        - cat list32.txt
+        - cat list64.txt
