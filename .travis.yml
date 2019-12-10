@@ -43,4 +43,6 @@ matrix:
 #      before_script:
 #        - cd tests
       script:
-        - ls -laR /c/Windows/
+        - grep -E dll docs/DLLX86.txt | awk {'print $2'} > list.txt
+        - cat list.txt
+        - ls -laR /c/Windows/SysWOW64/
