@@ -45,7 +45,7 @@ matrix:
         - mkdir -p rootfs/x8664_windows/registry
         - mkdir -p rootfs/x86_windows/dlls
         - mkdir -p rootfs/x86_windows/registry
-        - cmd.exe /C "ntuser hive C:\Users\Default\NTUSER.DAT"
+ #       - cmd.exe /C "ntuser hive C:\Users\Default\NTUSER.DAT"
         - cmd.exe //c "reg save hklm\system SYSTEM"
         - cmd.exe //c "reg save hklm\security SECURITY"
         - cmd.exe //c "reg save hklm\software SOFTWARE"
