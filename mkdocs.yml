@@ -5,7 +5,7 @@ site_url: https://qilingframework.readthedocs.org
 repo_url: https://github.com/qilingframework/qiling.git
 theme: readthedocs
 pages:
-- [index.md, Home]
-- [getting_started.md, Getting Started]
-- [scripting.md, scripting]
-- [demo.md, Demo]
+- 'index.md'
+- 'getting_started.md'
+- 'scripting.md'
+- 'demo.md'
