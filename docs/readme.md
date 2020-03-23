@@ -1,3 +1,5 @@
-### Documentation Home
+---
+title: Documentation Home
+---
 
 Doc home
