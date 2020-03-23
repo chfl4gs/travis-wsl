@@ -1,2 +1,5 @@
-### Scripting
+---
+title: Scripting
+---
+
 How to script
