@@ -54,6 +54,10 @@ matrix:
 #        - cp -r registry rootfs/x86_windows/
       script:
         - cmd.exe //C 'dllscollector.bat'
+        - ls -lah examples\rootfs\x86_windows\Windows\SysWOW64
+        - ls -lah examples\rootfs\x86_windows\Windows\registry
+        - ls -lah examples\rootfs\x8664_windows\Windows\System32
+        - ls -lah examples\rootfs\x8664_windows\Windows\registry
 #        ls -lah registry
 #        - grep -E Filename docs/DLLX86.txt | awk {'print $2'} > list32.txt
 #        - grep -E Filename docs/DLLX8664.txt | awk {'print $2'} > list64.txt
