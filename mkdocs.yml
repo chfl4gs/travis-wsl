@@ -1,0 +1,12 @@
+site_name: Qiling Framework Documentation
+site_description: Qiling Framework advanced binary analysis framework.
+site_favicon:
+site_url: qilingframework.readthedocs.org
+repo_url: https://github.com/qilingframework/qiling.git
+theme: readthedocs
+pages:
+- [index.md, Home]
+- [getting_started.md,Getting Started]
+- [daemon.md, Daemon script]
+- [metrics.md, Metrics]
+- [boot2docker.md, Boot2Docker]
