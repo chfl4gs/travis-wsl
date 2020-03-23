@@ -1,2 +1,5 @@
-### Getting Started
+---
+title: Getting Started
+---
+
 Gettting started documenation
