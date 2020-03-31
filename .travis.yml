@@ -1,4 +1,4 @@
-dism /Online /Add-Capability /CapabilityName:XPS.Viewer~~~~0.0.1.0language: shell
+language: shell
 os: windows
 matrix:
   fast_finish: true
