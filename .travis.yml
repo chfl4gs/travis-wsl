@@ -70,7 +70,7 @@ matrix:
 #        - cmd.exe //C "dism /online /enable-feature /featurename:Printing-XPSServices-Features"
 #        - cmd.exe //C "dism /online /Add-Capability /CapabilityName:XPS.Viewer~~~~0.0.1.0"
 #        - cat /c/Windows/Logs/DISM/dism.log
-        - cmd.exe //C "ServerManagerCmd.exe -query"
+        - cmd.exe //C "net start spooler"
         - ls -lah /c/Windows/System32/
 #        - ls -laR /c/Windows/SysWOW64/
 #        - ls -LaR /c/Windows/System32/
