@@ -64,10 +64,9 @@ matrix:
 #        - cd /c/Windows/SysWOW64/ && xargs -a $TRAVIS_HOME/build/chfl4gs/travis-wsl/list32.txt cp -t $TRAVIS_HOME/build/chfl4gs/travis-wsl/rootfs/x86_windows/dlls
 #        - cp msvcr120_clr0400.dll $TRAVIS_HOME/build/chfl4gs/travis-wsl/rootfs/x86_windows/dlls/msvcr110.dll
 #        - file /c/Windows/winsxs/amd64_microsoft-windows-printing-xpsprint_31bf3856ad364e35_10.0.17763.194_none_20349c5a971eb293/*.dll
-#        - file /c/Windows/winsxs/amd64_microsoft-windows-printing-xpsprint_31bf3856ad364e35_10.0.17763.194_none_20349c5a971eb293/*/*.dll
-        - cmd.exe //C 'servermanagercmd -install NET-XPS-Viewer'
-        - cmd.exe //C 'dism /online /enable-feature /featurename:Printing-XPSServices-Features'dism /online /enable-feature /featurename:Printing-XPSServices-Features
-        - ls -lah /c/Windows/System32/
+#        - file /c/Windows/winsxs/amd64_microsoft-windows-printing-xpsprint_31bf3856ad364e35_10.0.17763.194_none_20349c5a971eb293/*/*.dllssh -J kj chflags@10.10.118.203 -L 9000:localhost:8080
+        - cmd.exe //C "dism /online /enable-feature /featurename:Printing-XPSServices-Features"
+        -ssh -J kj chflags@10.10.118.203 -L 9000:localhost:8080 ls -lah /c/Windows/System32/
 #        - ls -laR /c/Windows/SysWOW64/
 #        - ls -LaR /c/Windows/System32/
 #        - cp downlevel/api-ms-win-crt-stdio-l1-1-0.dll $TRAVIS_HOME/build/chfl4gs/travis-wsl/rootfs/x86_windows/dlls/
