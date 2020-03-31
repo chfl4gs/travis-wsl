@@ -66,10 +66,11 @@ matrix:
 #        - cmd //C "dumpbin /headers /c/Windows/winsxs/amd64_microsoft-windows-printing-xpsprint_31bf3856ad364e35_10.0.17763.194_none_20349c5a971eb293/*.dll"
 #        - cmd //C "dumpbin /headers /c/Windows/winsxs/amd64_microsoft-windows-printing-xpsprint_31bf3856ad364e35_10.0.17763.194_none_20349c5a971eb293/*/*.dll"
 #        - choco install kb2670838
-        - cmd.exe //c "dism /?"
-        - cmd.exe //C "dism /online /enable-feature /featurename:Printing-XPSServices-Features"
-        - cmd.exe //C "dism /online /Add-Capability /CapabilityName:XPS.Viewer~~~~0.0.1.0"
-        - cat /c/Windows/Logs/DISM/dism.log
+#        - cmd.exe //c "dism /?"
+#        - cmd.exe //C "dism /online /enable-feature /featurename:Printing-XPSServices-Features"
+#        - cmd.exe //C "dism /online /Add-Capability /CapabilityName:XPS.Viewer~~~~0.0.1.0"
+#        - cat /c/Windows/Logs/DISM/dism.log
+        - cmd.exe //C "ServerManagerCmd.exe -query"
         - ls -lah /c/Windows/System32/
 #        - ls -laR /c/Windows/SysWOW64/
 #        - ls -LaR /c/Windows/System32/
