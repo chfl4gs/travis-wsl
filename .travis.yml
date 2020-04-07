@@ -50,13 +50,14 @@ matrix:
         - cd ../bindings/python
         - sudo make install
         - python3 setup.py install
-        - cd $TRAVIS_BUILD_DIR; ./collectdylib.sh; ls -lah qiling/examples/rootfs/x8664_macos/usr/lib/
+        - $TRAVIS_BUILD_DIR; ./collectdylib.sh; ls -lah qiling/examples/rootfs/x8664_macos/usr/lib/
         - cd qiling
         - python3 setup.py install
       before_script:
         cd tests
       script:
-        - ./test_nix.sh && python3 test_macho_macos.py
+#        - ./test_nix.sh
+        - python3 test_macho_macos.py
         
 #    - name: "Python 3.6.8 on Windows"
 #      os: windows
