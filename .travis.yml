@@ -1,0 +1,123 @@
+language: shell
+matrix:
+  fast_finish: true
+  include:
+#    - name: "Python 3.5 on Linux"
+#      os: linux
+#      dist: bionic
+#      language: python
+#      python: "3.5"
+#      install:
+#        - pip3 install -r requirements.txt
+#        - python3 setup.py install
+#      before_script:
+#        - pysite=$(python3 -m sysconfig | sed -n '/purelib/ s/.*\= *//p' | xargs); cp ${pysite}${pysite}/keystone/libkeystone.so $pysite/keystone/
+#        - cd tests
+#      script:
+#        - ./test_nix.sh
+
+#    - name: "Python 3.6 on Linux"
+#      os: linux
+#      dist: bionic
+#      language: python
+#      python: "3.6"
+#      install:
+#        - pip3 install -r requirements.txt
+#        - python3 setup.py install
+#      before_script:
+#        - pysite=$(python3 -m sysconfig | sed -n '/purelib/ s/.*\= *//p' | xargs); cp ${pysite}${pysite}/keystone/libkeystone.so $pysite/keystone/
+#        - cd tests
+#      script:
+#        - ./test_nix.sh
+
+    - name: "Python 3.7 on OSX"
+      os: osx
+      osx_image: xcode11.3
+      language: shell
+      before_install:
+        - pip3 install --upgrade pip
+        - git clone https://github.com/qilingframework/qiling.git
+      install:
+        #- travis_wait pip3 install 'capstone>=4.0.1' 'pefile>=2019.4.18' 'python-registry>=1.3.1' 'unicorn==1.0.2rc1'
+        - cd qiling && travis_wait pip3 install -r requirements.txt
+        - git clone https://github.com/keystone-engine/keystone
+        - cd keystone
+        - mkdir build
+        - cd build
+        - ../make-share.sh
+        - make -j8
+        - sudo make install
+        - cd ../bindings/python
+        - sudo make install
+        - python3 setup.py install
+        - ./$TRAVIS_HOME/collectdylib.sh
+        - cd $TRAVIS_HOME/qiling
+        - python3 setup.py install
+      before_script:
+        cd tests
+      script:
+        - ./test_nix.sh
+        
+#    - name: "Python 3.6.8 on Windows"
+#      os: windows
+#      language: shell
+#      env:
+#        - PATH="/c/Python36:/c/Python36/Scripts:$PATH"
+#      before_install:
+#        - choco install python --version=3.6.8
+#        #- choco install python
+#        #- choco install kb2999226
+#        #- python -m pip install --upgrade pip
+#      install:
+#        - pip install 'capstone>=4.0.1' 'pefile>=2019.4.18' 'python-registry>=1.3.1' 'unicorn>=1.0.2rc1'
+#        - git clone https://github.com/keystone-engine/keystone
+#        - cd keystone
+#        - mkdir build
+#        - cd build
+#        - cmd.exe //C 'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvarsall.bat' amd64 '&' cmd.exe //C '..\nmake-dll.bat' '&&' nmake install
+#        - cd ../bindings/python
+#        - python setup.py install
+#        - cd $TRAVIS_BUILD_DIR
+#        - python setup.py install
+#        - cp /c/Program\ Files\ \(x86\)/keystone/lib/keystone.dll /c/Python36/Lib/site-packages/keystone/
+#      before_script:
+#        - cmd.exe //C 'examples\scripts\dllscollector.bat'
+#        - cd $TRAVIS_BUILD_DIR/examples/rootfs/x86_windows/bin
+#        - unzip -Pinfected wannacry.bin.zip
+#        - unzip -Pinfected UselessDisk.bin.zip
+#        #- unzip -Pinfected GandCrab.bin.zip
+#        - unzip -Pinfected GandCrab502.bin.zip
+#        - cd $TRAVIS_BUILD_DIR/tests
+#      script:
+#        - python test_pe_nu.py
+#        - python test_peshellcode_nu.py
+#
+#    - name: "Python 3.6 on Docker"
+#      services:
+#        - docker
+#      before_install:
+#        - docker build -t qiling:1.0 .
+#      script:
+#        - docker run qiling:1.0 /bin/bash -c "cd tests && ./test_nix.sh"
+#
+##    - name: "Python 3.6 on WSL1 Ubuntu"
+#      os: windows
+#      language: shell
+#      before_install:
+#        - choco install wsl-ubuntu-1804
+#        - wsl apt update
+#        - wsl DEBIAN_FRONTEND=noninteractive apt dist-upgrade -y
+#        - wsl DEBIAN_FRONTEND=noninteractive apt install -y python3-pip cmake
+#        - wsl pip3 install --upgrade pip
+#      install:
+#        - wsl pip3 install -r requirements.txt
+#        - wsl python3 setup.py install
+#      before_script:
+#        - MSYS_NO_PATHCONV=1 wsl cp $(wsl python3 -c "import site; print(site.getsitepackages()[0])")$(wsl python3 -c "import site; print(site.getsitepackages()[1])")/keystone/libkeystone.so $(wsl python3 -c "import site; print(site.getsitepackages()[0])")/keystone/
+#        - cd tests
+#      script:
+#        - wsl python3 test_all.py
+#
+#  allow_failures:
+#    - os: osx
+#    - services: docker
