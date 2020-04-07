@@ -50,7 +50,7 @@ matrix:
         - cd ../bindings/python
         - sudo make install
         - python3 setup.py install
-        - ./$TRAVIS_HOME/collectdylib.sh
+        - ./$TRAVIS_BUILD_DIR/collectdylib.sh
         - cd $TRAVIS_HOME/qiling
         - python3 setup.py install
       before_script:
