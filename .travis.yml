@@ -50,7 +50,7 @@ matrix:
         - cd ../bindings/python
         - sudo make install
         - python3 setup.py install
-        - cd $TRAVIS_BUILD_DIR; ls -lah; ./collectdylib.sh
+        - cd $TRAVIS_BUILD_DIR; ./collectdylib.sh; ls -lah qiling/examples/rootfs/x8664_macos/usr/lib/
         - cd qiling
         - python3 setup.py install
       before_script:
