@@ -50,8 +50,8 @@ matrix:
         - cd ../bindings/python
         - sudo make install
         - python3 setup.py install
-        - cd $TRAVIS_BUILD_DIR; ls -lah; ./$TRAVIS_BUILD_DIR/collectdylib.sh
-        - cd $TRAVIS_HOME/qiling
+        - cd $TRAVIS_BUILD_DIR; ls -lah; ./collectdylib.sh
+        - cd qiling
         - python3 setup.py install
       before_script:
         cd tests
