@@ -56,7 +56,7 @@ matrix:
       before_script:
         cd tests
       script:
-        - ./test_nix.sh
+        - ./test_nix.sh && python3 test_macho_macos.py
         
 #    - name: "Python 3.6.8 on Windows"
 #      os: windows
