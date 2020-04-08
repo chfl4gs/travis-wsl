@@ -30,35 +30,42 @@ matrix:
 #      script:
 #        - ./test_nix.sh
 
-    - name: "Python 3.7 on OSX"
+    - name: "Unicorn: MacOSX brew"
       os: osx
       osx_image: xcode11.3
-      language: shell
-      before_install:
-        - pip3 install --upgrade pip
-        - git clone https://github.com/qilingframework/qiling.git
-      install:
-        #- travis_wait pip3 install 'capstone>=4.0.1' 'pefile>=2019.4.18' 'python-registry>=1.3.1' 'unicorn==1.0.2rc1'
-        - cd qiling && travis_wait pip3 install -r requirements.txt
-        - git clone https://github.com/keystone-engine/keystone
-        - cd keystone
-        - mkdir build
-        - cd build
-        - ../make-share.sh
-        - make -j8
-        - sudo make install
-        - cd ../bindings/python
-        - sudo make install
-        - python3 setup.py install
-        - man find
-        - cd $TRAVIS_BUILD_DIR; cat collectdylib.sh; ./collectdylib.sh; ls -lah qiling/examples/rootfs/x8664_macos/usr/lib/
-        - cd qiling
-        - python3 setup.py install
-      before_script:
-        cd tests
       script:
+        - brew install --HEAD unicorn
+        - brew test unicorn
+
+#    - name: "Python 3.7 on OSX"
+#      os: osx
+#      osx_image: xcode11.3
+#      language: shell
+#      before_install:
+#        - pip3 install --upgrade pip
+#        - git clone https://github.com/qilingframework/qiling.git
+#      install:
+#        #- travis_wait pip3 install 'capstone>=4.0.1' 'pefile>=2019.4.18' 'python-registry>=1.3.1' 'unicorn==1.0.2rc1'
+#        - cd qiling && travis_wait pip3 install -r requirements.txt
+#        - git clone https://github.com/keystone-engine/keystone
+#        - cd keystone
+#        - mkdir build
+#        - cd build
+#        - ../make-share.sh
+#        - make -j8
+#        - sudo make install
+#        - cd ../bindings/python
+#        - sudo make install
+#        - python3 setup.py install
+#        - man find
+#        - cd $TRAVIS_BUILD_DIR; cat collectdylib.sh; ./collectdylib.sh; ls -lah qiling/examples/rootfs/x8664_macos/usr/lib/
+#        - cd qiling
+#        - python3 setup.py install
+#      before_script:
+#        cd tests
+#      script:
 #        - ./test_nix.sh
-        - python3 test_macho_macos.py
+#        - python3 test_macho_macos.py
         
 #    - name: "Python 3.6.8 on Windows"
 #      os: windows
