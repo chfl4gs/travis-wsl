@@ -33,14 +33,12 @@ matrix:
     - name: "Unicorn: MacOSX brew"
       os: osx
       osx_image: xcode11.3
+      python: 3.7
       before_cache:
         - brew cleanup
       script:
         - cd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core && git stash && git clean -d -f
-        - brew uninstall python@2
-        - brew uninstall pythonü
-        - brew uninstall python2.7
-        - brew reinstall python
+        - alias python=python3
         - brew install --HEAD unicorn
         - brew test unicorn
 
