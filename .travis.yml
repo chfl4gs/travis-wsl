@@ -38,8 +38,8 @@ matrix:
         - brew cleanup
       script:
         - cd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core && git stash && git clean -d -f
-        - brew reinstall python; brew reinstall pyenv; pyenv install 3.7.7  
-        - export PATH="/usr/local/opt/python/libexec/bin:$PATH"; brew install --HEAD unicorn
+#        - brew reinstall python; brew reinstall pyenv; pyenv install 3.7.7  
+        - export PYTHONPATH="/usr/local/Cellar/python/3.7.7/bin/python3:$PYTHONPATH"; export PATH="/usr/local/opt/python/libexec/bin:$PATH"; brew install --HEAD unicorn
         - brew test unicorn
 
 #    - name: "Python 3.7 on OSX"
