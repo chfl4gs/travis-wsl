@@ -128,6 +128,11 @@ matrix:
 #        - cd tests
 #      script:
 #        - wsl python3 test_all.py
+
+cache:
+  directories:
+    - $HOME/Library/Caches/Homebrew
+    - /usr/local/Homebrew
 #
 #  allow_failures:
 #    - os: osx
