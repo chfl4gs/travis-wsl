@@ -33,6 +33,8 @@ matrix:
     - name: "Unicorn: MacOSX brew"
       os: osx
       osx_image: xcode11.3
+      before_cache:
+        - brew cleanup
       script:
         - brew doctor
         - brew unlink pkg-config
