@@ -38,6 +38,8 @@ matrix:
       script:
         - cd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core && git stash && git clean -d -f
         - brew uninstall python@2
+        - brew uninstall pythonü
+        - brew uninstall python2.7
         - brew reinstall python
         - brew install --HEAD unicorn
         - brew test unicorn
