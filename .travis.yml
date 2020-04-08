@@ -37,6 +37,7 @@ matrix:
         - brew cleanup
       script:
         - cd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core && git stash && git clean -d -f
+        - brew install python
         - brew install --HEAD unicorn
         - brew test unicorn
 
