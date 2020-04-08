@@ -38,7 +38,7 @@ matrix:
         - brew cleanup
       script:
         - cd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core && git stash && git clean -d -f
-        - brew uninstall python@2; pip3 install setuptools 
+        - brew reinstall python; brew reinstall pyenv; pyenv install 3.7.7  
         - export PATH="/usr/local/opt/python/libexec/bin:$PATH"; brew install --HEAD unicorn
         - brew test unicorn
 
