@@ -34,7 +34,8 @@ matrix:
       os: osx
       osx_image: xcode11.3
       script:
-        - brew upgrade git
+        - brew doctor
+        - brew unlink pkg-config
         - brew install --HEAD unicorn
         - brew test unicorn
 
