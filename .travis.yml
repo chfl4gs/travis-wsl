@@ -39,7 +39,8 @@ matrix:
       script:
         - cd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core && git stash && git clean -d -f
         - brew uninstall python@2
-        - alias python=python3; python --version; brew install --HEAD unicorn
+        - brew install python
+        - brew link python; python --version; brew install --HEAD unicorn
         - brew test unicorn
 
 #    - name: "Python 3.7 on OSX"
