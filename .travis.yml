@@ -40,7 +40,7 @@ matrix:
         - cd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core && git stash && git clean -d -f
 #        - brew reinstall python; brew reinstall pyenv; pyenv install 3.7.7 
         - brew uninstall python@2 
-        - brew switch python 3.7.7 ; brew install --HEAD unicorn
+        - brew link --overwrite python; brew install --HEAD unicorn
         - brew test unicorn
 
 #    - name: "Python 3.7 on OSX"
