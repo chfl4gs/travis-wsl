@@ -38,8 +38,9 @@ matrix:
         - brew cleanup
       script:
         - cd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core && git stash && git clean -d -f
-#        - brew reinstall python; brew reinstall pyenv; pyenv install 3.7.7  
-        - ls -l /usr/local/bin/python*; ln -s -f /usr/local/bin/python3.7 /usr/local/bin/python; ln -s -f /usr/local/bin/pip3 /usr/local/bin/pip; brew install --HEAD unicorn
+#        - brew reinstall python; brew reinstall pyenv; pyenv install 3.7.7 
+        - brew uninstall python@2 
+        - ls -l /usr/local/bin/python* /usr/bin/python*; ln -s -f /usr/local/bin/python3.7 /usr/local/bin/python; ln -s -f /usr/local/bin/pip3 /usr/local/bin/pip; brew install --HEAD unicorn
         - brew test unicorn
 
 #    - name: "Python 3.7 on OSX"
