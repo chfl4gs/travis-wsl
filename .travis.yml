@@ -111,7 +111,7 @@ matrix:
 #        - unzip -Pinfected GandCrab502.bin.zip
 #        - cd $TRAVIS_BUILD_DIR/tests
       script:
-         - ls -laR /c/windows/SysWoW/
+         - ls -laR /c/windows/SysWOW/
 #        - python test_pe_nu.py
 #        - python test_peshellcode_nu.py
 #
