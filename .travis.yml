@@ -30,25 +30,25 @@ matrix:
 #      script:
 #        - ./test_nix.sh
 
-    - name: "Unicorn: MacOSX brew"
-      os: osx
-      osx_image: xcode11.3
-      python: 3.7
-      before_cache:
-        - brew cleanup
-      before_install:
-        - cd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core && git stash && git clean -d -f
-        - brew unlink python
-        - brew uninstall pathon@2
-        - brew update
-      install:
-        - brew link --overwrite python
-        - brew install --HEAD unicorn 
-      script:
+#    - name: "Unicorn: MacOSX brew"
+#      os: osx
+#      osx_image: xcode11.3
+#      python: 3.7
+#      before_cache:
+#        - brew cleanup
+#      before_install:
+#        - cd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core && git stash && git clean -d -f
+#        - brew unlink python
+#        - brew uninstall pathon@2
+#        - brew update
+#      install:
+#        - brew link --overwrite python
+#        - brew install --HEAD unicorn 
+#      script:
 #        - brew reinstall python; brew reinstall pyenv; pyenv install 3.7.7 
 #        - brew uninstall python@2 
 #        - brew link --overwrite python; brew install --HEAD unicorn
-        - brew test unicorn
+#        - brew test unicorn
 
 #    - name: "Python 3.7 on OSX"
 #      os: osx
@@ -80,9 +80,9 @@ matrix:
 #        - ./test_nix.sh
 #        - python3 test_macho_macos.py
         
-#    - name: "Python 3.6.8 on Windows"
-#      os: windows
-#      language: shell
+    - name: "Python 3.6.8 on Windows"
+      os: windows
+      language: shell
 #      env:
 #        - PATH="/c/Python36:/c/Python36/Scripts:$PATH"
 #      before_install:
@@ -110,7 +110,8 @@ matrix:
 #        #- unzip -Pinfected GandCrab.bin.zip
 #        - unzip -Pinfected GandCrab502.bin.zip
 #        - cd $TRAVIS_BUILD_DIR/tests
-#      script:
+      script:
+         - ls -laR /c/windows/SysWoW/
 #        - python test_pe_nu.py
 #        - python test_peshellcode_nu.py
 #
@@ -140,10 +141,10 @@ matrix:
 #      script:
 #        - wsl python3 test_all.py
 
-cache:
-  directories:
-    - $HOME/Library/Caches/Homebrew
-    - /usr/local/Homebrew
+#cache:
+#  directories:
+#    - $HOME/Library/Caches/Homebrew
+#    - /usr/local/Homebrew
 #
 #  allow_failures:
 #    - os: osx
