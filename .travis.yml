@@ -180,7 +180,7 @@ matrix:
 #          - $HOME/AppData/Local/Temp/chocolatey
 #          - /C/tools/msys64
       script:
-        - git https://github.com/chfl4gs/unicorn.git
+        - git clone https://github.com/chfl4gs/unicorn.git
         - cd unicorn
         - $shell make; cp unicorn.dll /C/Windows/System32/; $shell make test
 #cache:
