@@ -151,6 +151,7 @@ matrix:
         - mkdir build
         - cd build
         - ../cmake.sh
+        - ls -laR
         - make -C ../tests/unit test && make -C ../tests/regress test
       addons:
         apt:
