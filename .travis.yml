@@ -145,13 +145,13 @@ matrix:
       compiler: gcc
       env:
         - PATH=$PATH:/usr/local/opt/binutils/bin
-        - LDFLAGS="-L $TRAVIS_BUILD_DIR/unicorn/build"
       script:
         - git clone https://github.com/chfl4gs/unicorn.git
         - cd unicorn
         - mkdir build
         - cd build
         - ../cmake.sh
+        - cp -r ../tests ./
         - make -C ../tests/unit test && make -C ../tests/regress test
       addons:
         apt:
