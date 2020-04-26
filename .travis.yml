@@ -145,7 +145,7 @@ matrix:
       compiler: gcc
       env:
         - PATH=$PATH:/usr/local/opt/binutils/bin
-        - LDFLAGS="-Wl,-rpath,./"
+        - LDFLAGS="-L $TRAVIS_BUILD_DIR/unicorn/build"
       script:
         - git clone https://github.com/chfl4gs/unicorn.git
         - cd unicorn
