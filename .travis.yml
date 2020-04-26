@@ -152,6 +152,10 @@ matrix:
         - cd build
         - ../cmake.sh
         - make -C ../tests/unit test && make -C ../tests/regress test
+      addons:
+        apt:
+          packages:
+            - libcmocka-dev
 
 #    - name: "Windows MSYS2/MinGW64"
 #      os: windows
