@@ -151,7 +151,7 @@ matrix:
         - mkdir build
         - cd build
         - ../cmake.sh
-        - export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/$pwd"; make -C ../tests/unit test && make -C ../tests/regress test
+        - export LD_RUN_PATH="$LD_RUN_PATH:/$pwd"; make -C ../tests/unit test && make -C ../tests/regress test
       addons:
         apt:
           packages:
