@@ -145,13 +145,14 @@ matrix:
       compiler: gcc
       env:
         - PATH=$PATH:/usr/local/opt/binutils/bin
+        - LDFLAGS="-Wl,-rpath,./"
       script:
         - git clone https://github.com/chfl4gs/unicorn.git
         - cd unicorn
         - mkdir build
         - cd build
         - ../cmake.sh
-        - export LD_RUN_PATH=$LD_RUN_PATH:./; make -C ../tests/unit test && make -C ../tests/regress test
+        - make -C ../tests/unit test && make -C ../tests/regress test
       addons:
         apt:
           packages:
