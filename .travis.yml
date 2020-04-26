@@ -152,7 +152,7 @@ matrix:
         - cd build
         - ../cmake.sh
         - ls -laR
-        - make -C ../tests/unit test && make -C ../tests/regress test
+        - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/$pwd; make -C ../tests/unit test && make -C ../tests/regress test
       addons:
         apt:
           packages:
