@@ -151,7 +151,7 @@ matrix:
         - mkdir build
         - cd build
         - ../cmake.sh
-        - make -C ../bindings/go && make -C ../bindings/go test && make test
+        - make -C ../tests/unit test && make -C ../tests/regress test
 
 #    - name: "Windows MSYS2/MinGW64"
 #      os: windows
