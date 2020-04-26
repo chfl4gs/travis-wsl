@@ -80,9 +80,9 @@ matrix:
 #        - ./test_nix.sh
 #        - python3 test_macho_macos.py
         
-    - name: "Python 3.6.8 on Windows"
-      os: windows
-      language: shell
+#    - name: "Python 3.6.8 on Windows"
+#      os: windows
+#      language: shell
 #      env:
 #        - PATH="/c/Python36:/c/Python36/Scripts:$PATH"
 #      before_install:
@@ -110,8 +110,8 @@ matrix:
 #        #- unzip -Pinfected GandCrab.bin.zip
 #        - unzip -Pinfected GandCrab502.bin.zip
 #        - cd $TRAVIS_BUILD_DIR/tests
-      script:
-         - ls -laR /c/windows/SysWOW64/
+#      script:
+#         - ls -laR /c/windows/SysWOW64/
 #        - python test_pe_nu.py
 #        - python test_peshellcode_nu.py
 #
@@ -140,7 +140,49 @@ matrix:
 #        - cd tests
 #      script:
 #        - wsl python3 test_all.py
-
+    - name: "Windows MSYS2/MinGW64"
+      os: windows
+      language: shell
+      env:
+        - PATH=/C/tools/msys64/mingw64/bin:$PATH
+      before_install:
+        - |
+          if [[ ! -f /C/tools/msys64/msys2_shell.cmd ]]; then
+               rm -rf /C/tools/msys64
+          fi
+        - choco uninstall -y mingw
+        - choco upgrade --no-progress -y msys2
+        - export msys2='cmd //C RefreshEnv.cmd '
+        - export msys2+='& set MSYS=winsymlinks:nativestrict '
+        - export msys2+='& C:\\tools\\msys64\\msys2_shell.cmd -defterm -no-start'
+        - export shell="$msys2 -mingw64 -full-path -here -c \$\* --"
+        - export msys2+=" -msys2 -c \$\* --"
+        - $msys2 pacman --sync --noconfirm --needed \
+                autoconf \
+                automake \
+                make \
+                perl \
+                python \
+                mingw-w64-x86_64-libtool \
+                mingw-w64-x86_64-toolchain \
+                mingw-w64-x86_64-cmake \
+                mingw-w64-x86_64-cmocka \
+                mingw-w64-x86_64-python3-setuptools
+                unzip
+        - export CPPFLAGS=-D__USE_MINGW_ANSI_STDIO=1
+        - export CC=x86_64-w64-mingw32-gcc
+        - export AR=gcc-ar
+        - export RANLIB=gcc-ranlib
+#      before_cache:
+#        - $msys2 pacman --sync --clean --noconfirm
+#      cache:
+#        directories:
+#          - $HOME/AppData/Local/Temp/chocolatey
+#          - /C/tools/msys64
+      script:
+        - git https://github.com/chfl4gs/unicorn.git
+        - cd unicorn
+        - $shell make; cp unicorn.dll /C/Windows/System32/; $shell make test
 #cache:
 #  directories:
 #    - $HOME/Library/Caches/Homebrew
