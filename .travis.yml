@@ -105,7 +105,8 @@ matrix:
 #        - cp /c/Program\ Files\ \(x86\)/keystone/lib/keystone.dll /c/Python36/Lib/site-packages/keystone/
 #      before_script:
         - cmd.exe //C 'examples\scripts\dllscollector.bat'
-        - sha256sum examples/rootfs/x8664_windows/dll/*
+        - sha256sum examples/rootfs/x8664_windows/System32/*
+        - sha256sum examples/rootfs/x8664_windows/SysWOW64/*
 #        - cd $TRAVIS_BUILD_DIR/examples/rootfs/x86_windows/bin
 #        - unzip -Pinfected wannacry.bin.zip
 #        - unzip -Pinfected UselessDisk.bin.zip
