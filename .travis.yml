@@ -80,13 +80,14 @@ matrix:
 #        - ./test_nix.sh
 #        - python3 test_macho_macos.py
         
-#    - name: "Python 3.6.8 on Windows"
-#      os: windows
-#      language: shell
-#      env:
-#        - PATH="/c/Python36:/c/Python36/Scripts:$PATH"
-#      before_install:
-#        - choco install python --version=3.6.8
+    - name: "Python 3.6.8 on Windows"
+      os: windows
+      language: shell
+      env:
+        - PATH="/c/Python36:/c/Python36/Scripts:$PATH"
+      before_install:
+        - git clone https://github.com/qilingframework/qiling.git
+        - cd qiling
 #        #- choco install python
 #        #- choco install kb2999226
 #        #- python -m pip install --upgrade pip
@@ -103,7 +104,8 @@ matrix:
 #        - python setup.py install
 #        - cp /c/Program\ Files\ \(x86\)/keystone/lib/keystone.dll /c/Python36/Lib/site-packages/keystone/
 #      before_script:
-#        - cmd.exe //C 'examples\scripts\dllscollector.bat'
+        - cmd.exe //C 'examples\scripts\dllscollector.bat'
+        - sha256sum examples/rootfs/x8664_windows/dll/*
 #        - cd $TRAVIS_BUILD_DIR/examples/rootfs/x86_windows/bin
 #        - unzip -Pinfected wannacry.bin.zip
 #        - unzip -Pinfected UselessDisk.bin.zip
@@ -140,23 +142,23 @@ matrix:
 #        - cd tests
 #      script:
 #        - wsl python3 test_all.py
-    - name: "Linux Cmake 64bit"
-      os: linux
-      compiler: gcc
-      env:
-        - PATH=$PATH:/usr/local/opt/binutils/bin
-      script:
-        - git clone https://github.com/chfl4gs/unicorn.git
-        - cd unicorn
-        - mkdir build
-        - cd build
-        - ../cmake.sh
-        - cp libunicorn.* ../
-        - make -C ../tests/unit test && make -C ../tests/regress test
-      addons:
-        apt:
-          packages:
-            - libcmocka-dev
+#    - name: "Linux Cmake 64bit"
+#      os: linux
+#      compiler: gcc
+#      env:
+#        - PATH=$PATH:/usr/local/opt/binutils/bin
+#      script:
+#        - git clone https://github.com/chfl4gs/unicorn.git
+#        - cd unicorn
+#        - mkdir build
+#        - cd build
+#        - ../cmake.sh
+#        - cp libunicorn.* ../
+#        - make -C ../tests/unit test && make -C ../tests/regress test
+#      addons:
+#        apt:
+#          packages:
+#            - libcmocka-dev
 
 #    - name: "Windows MSYS2/MinGW64"
 #      os: windows
