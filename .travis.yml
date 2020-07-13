@@ -106,7 +106,7 @@ matrix:
 #      before_script:
         - cmd.exe //C 'examples\scripts\dllscollector.bat'
         - sha256sum examples/rootfs/x8664_windows/Windows/System32/*
-        - sha256sum examples/rootfs/x8664_windows/Windows/SysWOW64/*
+        - sha256sum examples/rootfs/x86_windows/Windows/SysWOW64/*
 #        - cd $TRAVIS_BUILD_DIR/examples/rootfs/x86_windows/bin
 #        - unzip -Pinfected wannacry.bin.zip
 #        - unzip -Pinfected UselessDisk.bin.zip
