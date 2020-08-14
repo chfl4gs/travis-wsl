@@ -50,16 +50,16 @@ matrix:
 #        - brew link --overwrite python; brew install --HEAD unicorn
 #        - brew test unicorn
 
-#    - name: "Python 3.7 on OSX"
-#      os: osx
-#      osx_image: xcode11.3
-#      language: shell
-#      before_install:
-#        - pip3 install --upgrade pip
-#        - git clone https://github.com/qilingframework/qiling.git
-#      install:
+    - name: "Python 3.7 on OSX"
+      os: osx
+      osx_image: xcode11.3
+      language: shell
+      before_install:
+        - pip3 install --upgrade pip
+        - git clone -b dev https://github.com/qilingframework/qiling.git
+      install:
 #        #- travis_wait pip3 install 'capstone>=4.0.1' 'pefile>=2019.4.18' 'python-registry>=1.3.1' 'unicorn==1.0.2rc1'
-#        - cd qiling && travis_wait pip3 install -r requirements.txt
+        - cd qiling && pip3 install -r requirements.txt
 #        - git clone https://github.com/keystone-engine/keystone
 #        - cd keystone
 #        - mkdir build
@@ -69,25 +69,30 @@ matrix:
 #        - sudo make install
 #        - cd ../bindings/python
 #        - sudo make install
-#        - python3 setup.py install
+        - python3 setup.py install
 #        - man find
 #        - cd $TRAVIS_BUILD_DIR; cat collectdylib.sh; ./collectdylib.sh; ls -lah qiling/examples/rootfs/x8664_macos/usr/lib/
 #        - cd qiling
 #        - python3 setup.py install
+      before_script:
+        - ./examples/scripts/collectdylib.sh
+        - cd tests
+      script:
+        - ./test_macho.sh
 #      before_script:
 #        cd tests
 #      script:
 #        - ./test_nix.sh
 #        - python3 test_macho_macos.py
         
-    - name: "Python 3.6.8 on Windows"
-      os: windows
-      language: shell
-      env:
-        - PATH="/c/Python36:/c/Python36/Scripts:$PATH"
-      before_install:
-        - git clone https://github.com/qilingframework/qiling.git
-        - cd qiling
+#    - name: "Python 3.6.8 on Windows"
+#      os: windows
+#      language: shell
+#      env:
+#        - PATH="/c/Python36:/c/Python36/Scripts:$PATH"
+#      before_install:
+#        - git clone https://github.com/qilingframework/qiling.git
+#        - cd qiling
 #        #- choco install python
 #        #- choco install kb2999226
 #        #- python -m pip install --upgrade pip
@@ -104,9 +109,9 @@ matrix:
 #        - python setup.py install
 #        - cp /c/Program\ Files\ \(x86\)/keystone/lib/keystone.dll /c/Python36/Lib/site-packages/keystone/
 #      before_script:
-        - cmd.exe //C 'examples\scripts\dllscollector.bat'
-        - sha256sum examples/rootfs/x8664_windows/Windows/System32/*
-        - sha256sum examples/rootfs/x86_windows/Windows/SysWOW64/*
+#        - cmd.exe //C 'examples\scripts\dllscollector.bat'
+#        - sha256sum examples/rootfs/x8664_windows/Windows/System32/*
+#        - sha256sum examples/rootfs/x86_windows/Windows/SysWOW64/*
 #        - cd $TRAVIS_BUILD_DIR/examples/rootfs/x86_windows/bin
 #        - unzip -Pinfected wannacry.bin.zip
 #        - unzip -Pinfected UselessDisk.bin.zip
