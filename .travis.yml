@@ -71,7 +71,7 @@ matrix:
 #        - sudo make install
 #        - cd ../bindings/python
 #        - sudo make install
-        - python3 setup.py install
+        - pip install .
 #        - man find
 #        - cd $TRAVIS_BUILD_DIR; cat collectdylib.sh; ./collectdylib.sh; ls -lah qiling/examples/rootfs/x8664_macos/usr/lib/
 #        - cd qiling
