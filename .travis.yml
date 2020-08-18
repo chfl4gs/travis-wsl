@@ -13,6 +13,7 @@ matrix:
         - choco install cygwin cyg-get
         - cyg-get.bat default autoconf automake make gcc-core clang pkg-config libpcre-devel cmake python27-setuptools ruby wget
         - git clone https://github.com/chfl4gs/unicorn.git
+        - set -o igncr
         - cmd.exe //C "C:\\tools\\cygwin\\bin\\bash.exe -lc 'cd /cygdrive/$TRAVIS_BUILD_DIR/unicorn; make header; make; ./install-cmocka-linux.sh; export PATH="$PATH":/cygdrive/$TRAVIS_BUILD_DIR:/cygdrive/$TRAVIS_BUILD_DIR/cmocka/src; make test'"
 
 #    - name: "Python 3.5 on Linux"
