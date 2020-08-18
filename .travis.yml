@@ -11,7 +11,7 @@ matrix:
         - PATH=$PATH:/usr/local/opt/binutils/bin
       script:
         - choco install cygwin cyg-get
-        - cmd.exe //C "C:\\tools\\cygwin\\bin\\bash.exe -lc 'ls -lah /cygdrive/'"
+        - cmd.exe //C "C:\\tools\\cygwin\\bin\\bash.exe -lc 'ls -lah /cygdrive/$TRAVIS_BUILD_DIR'"
 
 #    - name: "Python 3.5 on Linux"
 #      os: linux
