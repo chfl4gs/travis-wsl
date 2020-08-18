@@ -10,7 +10,7 @@ matrix:
       env:
         - PATH=$PATH:/usr/local/opt/binutils/bin
       script:
-        - cmd.exe //C "C:\\tools\\cygwin\\bin\\bash.exe -lc 'cd /cygdrive/$TRAVIS_BUILD_DIR; export PATH="$PATH":/cygdrive/$TRAVIS_BUILD_DIR; pwd'"
+        - export SHELLOPTS cmd.exe //C "C:\\tools\\cygwin\\bin\\bash.exe -lc 'cd /cygdrive/$TRAVIS_BUILD_DIR; export PATH="$PATH":/cygdrive/$TRAVIS_BUILD_DIR; pwd'"
 
 #    - name: "Python 3.5 on Linux"
 #      os: linux
