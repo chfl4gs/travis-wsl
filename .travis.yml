@@ -11,7 +11,10 @@ matrix:
         - PATH=$PATH:/usr/local/opt/binutils/bin
       script:
         - choco install cygwin cyg-get
-        - cmd.exe //C "C:\\tools\\cygwin\\bin\\bash.exe -lc 'ls -lah /cygdrive/$TRAVIS_BUILD_DIR'"
+        - cyg-get.bat default autoconf automake make gcc-core clang pkg-config libpcre-devel cmake python27-setuptools ruby wget
+        - git clone -b dev https://github.com/chfl4gs/unicorn.git
+        - cd unicorn
+        - cmd.exe //C "C:\\tools\\cygwin\\bin\\bash.exe -lc 'cd /cygdrive/$TRAVIS_BUILD_DIR; make header; make; ./install-cmocka-linux.sh; export PATH="$PATH":/cygdrive/$TRAVIS_BUILD_DIR:/cygdrive/$TRAVIS_BUILD_DIR/cmocka/src; make test'"
 
 #    - name: "Python 3.5 on Linux"
 #      os: linux
