@@ -10,7 +10,7 @@ matrix:
       env:
         - PATH=$PATH:/usr/local/opt/binutils/bin
       scri1pt:
-        - choco install --no-progress -y cygwin cyg- bash
+        - choco install --no-progress -y cygwin cyg-get
         - cyg-get.bat default autoconf automake make gcc-core clang pkg-config libgcc1-devel libpcre-devel cmake python27-setuptools ruby wget bash git
         - git clone https://github.com/chfl4gs/unicorn.git
         - export SHELLOPTS && set -o igncr && cmd.exe //C "C:\\tools\\cygwin\\bin\\bash.exe -lc 'cd /cygdrive/$TRAVIS_BUILD_DIR/unicorn; make header; make; ./install-cmocka-linux.sh; export PATH="$PATH":/cygdrive/$TRAVIS_BUILD_DIR/unicorn:/cygdrive/$TRAVIS_BUILD_DIR/unicorn/cmocka/src; make test'"
