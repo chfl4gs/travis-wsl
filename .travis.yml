@@ -9,9 +9,9 @@ matrix:
         - clang
       env:
         - PATH=$PATH:/usr/local/opt/binutils/bin
-      script:
-        - choco install --no-progress -y cygwin
-        - setup-x86.exe -q --upgrade-also --wait --arch="x86_64" --root="C:\tools\cygwin" --packages="autoconf,automake,make,gcc-core,clang,libgcc1,pkg-config,libpcre-devel,libllvm,libllvm-devel,cmake,python27-setuptools,wget,bash,p7zip,libssl-devel,git,diffutils,m4,libtool"
+      scri1pt:
+        - choco install --no-progress -y cygwin cyg- bash
+        - cyg-get.bat default autoconf automake make gcc-core clang pkg-config libgcc1-devel libpcre-devel cmake python27-setuptools ruby wget bash git
         - git clone https://github.com/chfl4gs/unicorn.git
         - export SHELLOPTS && set -o igncr && cmd.exe //C "C:\\tools\\cygwin\\bin\\bash.exe -lc 'cd /cygdrive/$TRAVIS_BUILD_DIR/unicorn; make header; make; ./install-cmocka-linux.sh; export PATH="$PATH":/cygdrive/$TRAVIS_BUILD_DIR/unicorn:/cygdrive/$TRAVIS_BUILD_DIR/unicorn/cmocka/src; make test'"
 
