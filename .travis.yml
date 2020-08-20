@@ -12,8 +12,8 @@ matrix:
       script:
         - choco install --no-progress -y cygwin
         - setup-x86.exe -q --upgrade-also --wait --arch="x86_64" --root="C:\tools\cygwin" --packages="autoconf,automake,make,gcc-core,clang,libgcc1,pkg-config,libpcre-devel,libllvm,libllvm-devel,cmake,python27-setuptools,wget,bash,p7zip,libssl-devel,git,diffutils,m4,libtool"
-        - git clone https://github.com/chfl4gs/unicorn.git && export SHELLOPTS && set -o igncr && \
-          cmd //C "C:\\tools\\cygwin\\bin\\bash.exe -lc 'clang -v; cd /cygdrive/$TRAVIS_BUILD_DIR/unicorn; make header; make; ./install-cmocka-linux.sh; export PATH="$PATH":/cygdrive/$TRAVIS_BUILD_DIR/unicorn:/cygdrive/$TRAVIS_BUILD_DIR/unicorn/cmocka/src; make test'"
+        - git clone https://github.com/chfl4gs/unicorn.git
+        - export SHELLOPTS && set -o igncr && cmd.exe //C "C:\\tools\\cygwin\\bin\\bash.exe -lc 'cd /cygdrive/$TRAVIS_BUILD_DIR/unicorn; make header; make; ./install-cmocka-linux.sh; export PATH="$PATH":/cygdrive/$TRAVIS_BUILD_DIR/unicorn:/cygdrive/$TRAVIS_BUILD_DIR/unicorn/cmocka/src; make test'"
 
 #    - name: "Python 3.5 on Linux"
 #      os: linux
