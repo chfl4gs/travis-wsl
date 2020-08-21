@@ -13,7 +13,7 @@ matrix:
         - choco install --no-progress -y cygwin cyg-get
         - cyg-get.bat default autoconf automake make gcc-core clang pkg-config libpcre-devel cmake python27-setuptools ruby wget bash git
         - git clone https://github.com/chfl4gs/unicorn.git
-        - export SHELLOPTS && set -o igncr && cmd.exe //C "C:\\tools\\cygwin\\bin\\bash.exe -lc 'cd /cygdrive/$TRAVIS_BUILD_DIR/unicorn; make header; make; mkdir cmocka; wget --no-check-certificate https://cmocka.org/files/1.1/cmocka-1.1.1.tar.xz -P /tmp/; tar -xf /tmp/cmocka-1.1.1.tar.xz -C /tmp; cd cmocka; cmake -DUNIT_TESTING=On /tmp/cmocka-1.1.1; make; make cp -R /tmp/cmocka-1.1.1/include/ .test; cp -R /tmp/cmocka-1.1.1/include/ .'"
+        - export SHELLOPTS && set -o igncr && cmd.exe //C "C:\\tools\\cygwin\\bin\\bash.exe -lc 'cd /cygdrive/$TRAVIS_BUILD_DIR/unicorn; make header; make; mkdir cmocka; wget --no-check-certificate https://cmocka.org/files/1.1/cmocka-1.1.1.tar.xz -P /tmp/; tar -xf /tmp/cmocka-1.1.1.tar.xz -C /tmp; cd cmocka; cmake -DUNIT_TESTING=On /tmp/cmocka-1.1.1; make; make cp -R /tmp/cmocka-1.1.1/include/ .test; cp -R /tmp/cmocka-1.1.1/include/ .; cd /cygdrive/$TRAVIS_BUILD_DIR/unicorn; make test'"
 
 #    - name: "Python 3.5 on Linux"
 #      os: linux
