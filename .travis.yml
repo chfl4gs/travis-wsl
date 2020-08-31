@@ -37,7 +37,7 @@ matrix:
         - export SHELLOPTS && set -o igncr && cmd.exe //C "C:\\tools\\cygwin\\bin\\bash.exe -lc 'cd /cygdrive/$TRAVIS_BUILD_DIR/unicorn/bindings/python; python3 -m ensurepip; pip3 install --upgrade pip; pip3 install wheel; python3 setup.py bdist_wheel'"
         - ls -laR $TRAVIS_BUILD_DIR/unicorn
 
-- name: "Windows cygwin keystone"
+    - name: "Windows cygwin keystone"
       os: windows
       language: c
       compiler:
