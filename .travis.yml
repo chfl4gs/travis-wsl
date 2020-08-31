@@ -35,7 +35,7 @@ matrix:
         - cyg-get.bat default autoconf automake make gcc-core clang pkg-config libpcre-devel cmake python3-setuptools python3-wheel python3-magic ruby wget
         - cd $TRAVIS_BUILD_DIR && git clone https://github.com/chfl4gs/unicorn
         - export SHELLOPTS && set -o igncr && cmd.exe //C "C:\\tools\\cygwin\\bin\\bash.exe -lc 'cd /cygdrive/$TRAVIS_BUILD_DIR/unicorn/bindings/python; python3 -m ensurepip; pip3 install --upgrade pip; pip3 install wheel; python3 setup.py bdist_wheel'"
-        - ls -laR $TRAVIS_BUILD_DIR/unicorn
+#        - ls -laR $TRAVIS_BUILD_DIR/unicorn
 
     - name: "Windows cygwin keystone"
       os: windows
@@ -49,7 +49,7 @@ matrix:
         - cyg-get.bat default autoconf automake make gcc-core clang pkg-config libpcre-devel cmake python3-setuptools python3-wheel python3-magic ruby wget
         - cd $TRAVIS_BUILD_DIR && git clone https://github.com/chfl4gs/keystone
         - export SHELLOPTS && set -o igncr && cmd.exe //C "C:\\tools\\cygwin\\bin\\bash.exe -lc 'cd /cygdrive/$TRAVIS_BUILD_DIR/keystone/bindings/python; python3 -m ensurepip; pip3 install --upgrade pip; pip3 install wheel; python3 setup.py bdist_wheel'"
-        - ls -laR $TRAVIS_BUILD_DIR/keystone
+#        - ls -laR $TRAVIS_BUILD_DIR/keystone
         
 #    - name: "Python 3.5 on Linux"
 #      os: linux
