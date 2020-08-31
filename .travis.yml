@@ -9,10 +9,10 @@ matrix:
         - gcc
       env:
         - PATH=$PATH:/usr/local/opt/binutils/bin
-      before_script:
+      script:
         - choco install --no-progress -y cygwin cyg-get
-        - cyg-get.bat default autoconf automake make gcc-core clang pkg-config libpcre-devel cmake python3-setuptools python3-pip python3-wheel python3-magic ruby wget; \
-          git clone -b dev https://github.com/qilingframework/qiling
+        - cyg-get.bat default autoconf automake make gcc-core clang pkg-config libpcre-devel cmake python3-setuptools python3-pip python3-wheel python3-magic ruby wget
+        - git clone -b dev https://github.com/qilingframework/qiling
         - export SHELLOPTS && set -o igncr && cmd.exe //C "C:\\tools\\cygwin\\bin\\bash.exe -lc 'cd /cygdrive/$TRAVIS_BUILD_DIR/qiling; pip3 install .'"
         - cd $TRAVIS_BUILD_DIR/qiling 
         - cmd.exe //C 'examples\scripts\dllscollector.bat'
@@ -21,7 +21,6 @@ matrix:
         - unzip -Pinfected UselessDisk.bin.zip
         - unzip -Pinfected GandCrab502.bin.zip
         - unzip -Pinfected al-khaser.bin.zip
-      script:
         -  cmd.exe //C "C:\\tools\\cygwin\\bin\\bash.exe -lc 'cd /cygdrive/$TRAVIS_BUILD_DIR/qiling/tests; python3 test_pe.py; ./test_elf.sh'"
         
 #    - name: "Python 3.5 on Linux"
