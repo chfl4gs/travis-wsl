@@ -11,9 +11,9 @@ matrix:
         - PATH=$PATH:/usr/local/opt/binutils/bin
       script:
         - choco install --no-progress -y cygwin cyg-get
-        - cyg-get.bat default autoconf automake make gcc-core clang pkg-config libpcre-devel cmake python3-setuptools python3-pip python3-wheel python3-magic ruby wget
+        - cyg-get.bat default autoconf automake make gcc-core clang pkg-config libpcre-devel cmake python3-setuptools python3-wheel python3-magic ruby wget
         - cd $TRAVIS_BUILD_DIR && git clone -b dev https://github.com/qilingframework/qiling
-        - export SHELLOPTS && set -o igncr && cmd.exe //C "C:\\tools\\cygwin\\bin\\bash.exe -lc 'cd /cygdrive/$TRAVIS_BUILD_DIR/qiling; python3 -m pip install --upgrade pip; pip3 install .'"
+        - export SHELLOPTS && set -o igncr && cmd.exe //C "C:\\tools\\cygwin\\bin\\bash.exe -lc 'cd /cygdrive/$TRAVIS_BUILD_DIR/qiling; python3 -m ensurepip; pip3 install .'"
         - cd $TRAVIS_BUILD_DIR/qiling 
         - cmd.exe //C 'examples\scripts\dllscollector.bat'
         - cd $TRAVIS_BUILD_DIR/qiling/examples/rootfs/x86_windows/bin
