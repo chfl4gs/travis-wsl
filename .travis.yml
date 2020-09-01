@@ -2,7 +2,7 @@ language: shell
 matrix:
   fast_finish: true
   include:
-    - name: "cygwin qiling"
+    - name: "cygwin qiling build"
       os: windows
       language: c
       compiler:
@@ -26,7 +26,7 @@ matrix:
         - unzip -Pinfected al-khaser.bin.zip
         - cmd.exe //C "C:\\tools\\cygwin\\bin\\bash.exe -lc 'cd /cygdrive/$TRAVIS_BUILD_DIR/qiling/tests; python test_pe.py; ./test_elf.sh'"
 
-    - name: "Windows cygwin capstone"
+    - name: "cygwin capstone build"
       os: windows
       language: c
       compiler:
@@ -37,8 +37,7 @@ matrix:
         - choco install --no-progress -y cygwin cyg-get
         - cyg-get.bat default autoconf automake make gcc-core clang pkg-config libpcre-devel cmake python3-setuptools python3-wheel python3-magic ruby wget
         - cd $TRAVIS_BUILD_DIR && git clone https://github.com/chfl4gs/capstone
-        - export SHELLOPTS && set -o igncr && cmd.exe //C "C:\\tools\\cygwin\\bin\\bash.exe -lc 'cd /cygdrive/$TRAVIS_BUILD_DIR/capstone; python3 -m ensurepip; pip3 install --upgrade pip; pip3 install wheel; python3 setup.py bdist_wheel'"
-        - ls -laR $TRAVIS_BUILD_DIR/capstone
+        - export SHELLOPTS && set -o igncr && cmd.exe //C "C:\\tools\\cygwin\\bin\\bash.exe -lc 'cd /cygdrive/$TRAVIS_BUILD_DIR/capstone/bindings/python; python3 -m ensurepip; pip3 install --upgrade pip; pip3 install wheel; python3 setup.py bdist_wheel'"
 
 #    - name: "Windows cygwin keystone"
 #      os: windows
