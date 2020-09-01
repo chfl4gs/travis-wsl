@@ -2,42 +2,42 @@ language: shell
 matrix:
   fast_finish: true
   include:
-#    - name: "cygwin qiling build"
-#      os: windows
-#      language: c
-#      compiler:
-#        - gcc
-#      env:
-#       - PATH=$PATH:/usr/local/opt/binutils/bin
-#      script:
-#        - choco install --no-progress -y cygwin cyg-get
-#        - cyg-get.bat default autoconf automake make gcc-core clang pkg-config libpcre-devel cmake python3-setuptools python3-wheel python3-magic ruby wget
-#        - cd $TRAVIS_BUILD_DIR && git clone -b dev https://github.com/chfl4gs/qiling
-#        - git clone https://github.com/chfl4gs/unicorn
-#        - git clone https://github.com/chfl4gs/capstone
-#        - git clone https://github.com/chfl4gs/keystone
-#        - export SHELLOPTS && set -o igncr && cmd.exe //C "C:\\tools\\cygwin\\bin\\bash.exe -lc 'cd /cygdrive/$TRAVIS_BUILD_DIR/keystone/bindings/python; python3 -m ensurepip; pip3 install --upgrade pip; pip3 install wheel; python3 setup.py install; cd /cygdrive/$TRAVIS_BUILD_DIR/unicorn/bindings/python; python3 setup.py install; cd /cygdrive/$TRAVIS_BUILD_DIR/capstone/bindings/python; python3 setup.py install; cd /cygdrive/$TRAVIS_BUILD_DIR/qiling; pip3 install .'"
-#        - cd $TRAVIS_BUILD_DIR/qiling 
-#        - cmd.exe //C 'examples\scripts\dllscollector.bat'
-#        - cd $TRAVIS_BUILD_DIR/qiling/examples/rootfs/x86_windows/bin
-#        - unzip -Pinfected wannacry.bin.zip
-#        - unzip -Pinfected UselessDisk.bin.zip
-#        - unzip -Pinfected GandCrab502.bin.zip
-#        - unzip -Pinfected al-khaser.bin.zip
-#        - cmd.exe //C "C:\\tools\\cygwin\\bin\\bash.exe -lc 'cd /cygdrive/$TRAVIS_BUILD_DIR/qiling/tests; python test_pe.py; ./test_elf.sh'"
-
-    - name: "cygwin capstone build"
+    - name: "cygwin qiling build"
       os: windows
       language: c
       compiler:
         - gcc
       env:
-        - PATH=$PATH:/usr/local/opt/binutils/bin
+       - PATH=$PATH:/usr/local/opt/binutils/bin
       script:
         - choco install --no-progress -y cygwin cyg-get
         - cyg-get.bat default autoconf automake make gcc-core clang pkg-config libpcre-devel cmake python3-setuptools python3-wheel python3-magic ruby wget
-        - cd $TRAVIS_BUILD_DIR && git clone https://github.com/chfl4gs/capstone
-        - export SHELLOPTS && set -o igncr && cmd.exe //C "C:\\tools\\cygwin\\bin\\bash.exe -lc 'cd /cygdrive/$TRAVIS_BUILD_DIR/capstone/bindings/python; python3 -m ensurepip; pip3 install --upgrade pip; pip3 install wheel; python3 setup.py bdist_wheel'"
+        - cd $TRAVIS_BUILD_DIR && git clone -b dev https://github.com/chfl4gs/qiling
+        - git clone https://github.com/chfl4gs/unicorn
+        - git clone https://github.com/chfl4gs/capstone
+        - git clone https://github.com/chfl4gs/keystone
+        - export SHELLOPTS && set -o igncr && cmd.exe //C "C:\\tools\\cygwin\\bin\\bash.exe -lc 'cd /cygdrive/$TRAVIS_BUILD_DIR/keystone/bindings/python; python3 -m ensurepip; pip3 install --upgrade pip; pip3 install wheel; python3 setup.py install; cd /cygdrive/$TRAVIS_BUILD_DIR/unicorn/bindings/python; python3 setup.py install; cd /cygdrive/$TRAVIS_BUILD_DIR/capstone/bindings/python; python3 setup.py install; cd /cygdrive/$TRAVIS_BUILD_DIR/qiling; pip3 install .'"
+        - cd $TRAVIS_BUILD_DIR/qiling 
+        - cmd.exe //C 'examples\scripts\dllscollector.bat'
+        - cd $TRAVIS_BUILD_DIR/qiling/examples/rootfs/x86_windows/bin
+        - unzip -Pinfected wannacry.bin.zip
+        - unzip -Pinfected UselessDisk.bin.zip
+        - unzip -Pinfected GandCrab502.bin.zip
+        - unzip -Pinfected al-khaser.bin.zip
+        - cmd.exe //C "C:\\tools\\cygwin\\bin\\bash.exe -lc 'cd /cygdrive/$TRAVIS_BUILD_DIR/qiling/tests; python test_pe.py; ./test_elf.sh'"
+
+#    - name: "cygwin capstone build"
+#      os: windows
+#      language: c
+#      compiler:
+#        - gcc
+#      env:
+#        - PATH=$PATH:/usr/local/opt/binutils/bin
+#      script:
+#        - choco install --no-progress -y cygwin cyg-get
+#        - cyg-get.bat default autoconf automake make gcc-core clang pkg-config libpcre-devel cmake python3-setuptools python3-wheel python3-magic ruby wget
+#        - cd $TRAVIS_BUILD_DIR && git clone https://github.com/chfl4gs/capstone
+#        - export SHELLOPTS && set -o igncr && cmd.exe //C "C:\\tools\\cygwin\\bin\\bash.exe -lc 'cd /cygdrive/$TRAVIS_BUILD_DIR/capstone/bindings/python; python3 -m ensurepip; pip3 install --upgrade pip; pip3 install wheel; python3 setup.py bdist_wheel'"
 
 #    - name: "Windows cygwin keystone"
 #      os: windows
