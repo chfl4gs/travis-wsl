@@ -37,7 +37,7 @@ matrix:
         - choco install --no-progress -y cygwin cyg-get
         - cyg-get.bat default autoconf automake make gcc-core clang pkg-config libpcre-devel cmake python3-setuptools python3-wheel python3-magic ruby wget
         - cd $TRAVIS_BUILD_DIR && git clone https://github.com/chfl4gs/capstone
-        - export SHELLOPTS && set -o igncr && cmd.exe //C "C:\\tools\\cygwin\\bin\\bash.exe -lc 'cd /cygdrive/$TRAVIS_BUILD_DIR/capstone/bindings/python; python3 -m ensurepip; pip3 install --upgrade pip; pip3 install wheel; clang -dumpmachine'"
+        - export SHELLOPTS && set -o igncr && cmd.exe //C "C:\\tools\\cygwin\\bin\\bash.exe -lc 'cd /cygdrive/$TRAVIS_BUILD_DIR/capstone/bindings/python; python3 -m ensurepip; pip3 install --upgrade pip; pip3 install wheel; clang -dumpmachine; echo > /dev/null'"
 
 #    - name: "Windows cygwin keystone"
 #      os: windows
