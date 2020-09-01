@@ -24,7 +24,7 @@ matrix:
         - unzip -Pinfected UselessDisk.bin.zip
         - unzip -Pinfected GandCrab502.bin.zip
         - unzip -Pinfected al-khaser.bin.zip
-        - export SHELLOPTS && set -o igncr && cmd.exe //C "C:\\tools\\cygwin\\bin\\bash.exe -lc 'cd /cygdrive/$TRAVIS_BUILD_DIR/qiling/tests; python test_pe.py; ./test_elf.sh'"
+        - export SHELLOPTS && set -o igncr && cmd.exe //C "C:\\tools\\cygwin\\bin\\bash.exe -lc 'cd /cygdrive/$TRAVIS_BUILD_DIR/qiling/tests; python3 test_pe.py; ./test_elf.sh'"
 
 #    - name: "cygwin capstone build"
 #      os: windows
