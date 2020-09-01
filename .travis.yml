@@ -16,7 +16,7 @@ matrix:
         - git clone https://github.com/chfl4gs/unicorn
         - git clone https://github.com/chfl4gs/capstone
         - git clone https://github.com/chfl4gs/keystone
-        - export SHELLOPTS && set -o igncr && cmd.exe //C "C:\\tools\\cygwin\\bin\\bash.exe -lc 'cd /cygdrive/$TRAVIS_BUILD_DIR/keystone/bindings/python; python3 -m ensurepip; pip3 install --upgrade pip; pip3 install wheel; python3 setup.py install; cd /cygdrive/$TRAVIS_BUILD_DIR/unicorn/bindings/python; python3 setup.py install; cd /cygdrive/$TRAVIS_BUILD_DIR/capstone/bindings/python; python setup.py install; cd /cygdrive/$TRAVIS_BUILD_DIR/qiling; pip3 install .'"
+        - export SHELLOPTS && set -o igncr && cmd.exe //C "C:\\tools\\cygwin\\bin\\bash.exe -lc 'cd /cygdrive/$TRAVIS_BUILD_DIR/keystone/bindings/python; python3 -m ensurepip; pip3 install --upgrade pip; pip3 install wheel setuptools; python3 setup.py install; cd /cygdrive/$TRAVIS_BUILD_DIR/unicorn/bindings/python; python3 setup.py install; cd /cygdrive/$TRAVIS_BUILD_DIR/capstone/bindings/python; python3 setup.py install; cd /cygdrive/$TRAVIS_BUILD_DIR/qiling; pip3 install .'"
         - cd $TRAVIS_BUILD_DIR/qiling 
         - cmd.exe //C 'examples\scripts\dllscollector.bat'
         - cd $TRAVIS_BUILD_DIR/qiling/examples/rootfs/x86_windows/bin
