@@ -19,7 +19,7 @@ for binfile in os.listdir(bindir):
         print("Processing file :" + fpath)
         proc = subprocess.Popen(["qltool", "run", "--multithread", "--rootfs", "/", "-f", fpath], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         try:
-            (out, err) = proc.communicate(timeout=5)
+            out = proc.communicate(timeout=5)
             logging.info("\n")
             logging.info("\n")
             logging.info("Processing binary file: " + fpath)
