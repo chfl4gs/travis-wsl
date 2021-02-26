@@ -13,17 +13,21 @@ def istext(path):
     msg = subprocess.Popen(["file", "--mime", path], stdout=subprocess.PIPE).communicate()[0]
     return re.search('binary', msg.decode()) != None
 
-for binfile in os.listdir(bindir):
-    fpath = bindir + '/' + binfile
-    if istext(fpath) is True:
-        print("Processing file :" + fpath)
-        proc = subprocess.Popen(["qltool", "run", "--multithread", "--rootfs", "/", "-f", fpath], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-        try:
-            out = proc.communicate(timeout=5)
-            logging.info("\n")
-            logging.info("\n")
-            logging.info("Processing binary file: " + fpath)
-            logging.info("The qltool output:")
-            logging.info(out.decode())
-        except:
-            proc.kill()
+def main():
+    for binfile in os.listdir(bindir):
+        fpath = bindir + '/' + binfile
+        if istext(fpath) is True:
+            print("Processing file :" + fpath)
+            proc = subprocess.Popen(["qltool", "run", "--multithread", "--rootfs", "/", "-f", fpath], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+            try:
+                out = proc.communicate(timeout=5)
+                logging.info("\n")
+                logging.info("\n")
+                logging.info("Processing binary file: " + fpath)
+                logging.info("The qltool output:")
+                logging.info(out.decode())
+            except:
+                proc.kill()
+
+if __name__ == '__main__':
+    main()
